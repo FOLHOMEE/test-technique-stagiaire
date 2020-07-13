@@ -27,8 +27,8 @@ somme
 a=20 # on pourrait mettre 2520
 tourne=True
 while tourne:
-    a+=1
-    if (a%7==0 and a%11==0 and a%13==0 and a%16==0 and a%17==0 and a%18==0 and a%19==0 and a%20==0):
+    a+=20
+    if (a%7==0 and a%11==0 and a%13==0 and a%16==0 and a%17==0 and a%18==0 and a%19==0):
     #if (a%7==0 and a%9==0 and a%10==0 and a%8==0 ): test pour retrouver le 2520
         tourne =False
     
