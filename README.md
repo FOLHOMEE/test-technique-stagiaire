@@ -48,6 +48,14 @@ En considérant les termes de la séquence de Fibonacci dont les valeurs ne dép
 
 ### Problème #3
 
-2520 est le plus petit nombre qui peut être divisé par chacun des nombres de 1 à 10 sans aucun reste.
+La somme des carrés des dix premiers entiers naturels est :
 
-Quel est le plus petit nombre positif divisible par tous les nombres de 1 à 20?
+![somme des carrés](http://www.sciweavers.org/upload/Tex2Img_1603434890/eqn.png "sum power two")
+
+Le carré de la somme des dix premiers entiers naturels est :
+
+![carré de la somme](http://www.sciweavers.org/upload/Tex2Img_1603435122/eqn.png "powee two sum")
+
+Ainsi la différence entre la somme des carrés et le carré de la somme pour les dix premiers entiers naturels est : `3025 - 385 = 2640`
+
+Trouvez la différence entre la somme des carrés et le carré de la somme pour les cent premiers entiers naturels
