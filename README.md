@@ -48,14 +48,38 @@ En considérant les termes de la séquence de Fibonacci dont les valeurs ne dép
 
 ### Problème #3
 
-La somme des carrés des dix premiers entiers naturels est :
+Dans cet exercice, nous allons travailler sur le décryptage d'un plan de navigation, et nous allons ensuite calculer la [distance de Manhattan](https://en.wikipedia.org/wiki/Taxicab_geometry) du bateau, par rapport à son point de départ. Les instructions de navigation (votre input) se composent d'une séquence d'actions à un seul caractère associées à des valeurs d'entrée entières :
 
-![somme des carrés](http://www.sciweavers.org/upload/Tex2Img_1603434890/eqn.png "sum power two")
+- L'action N signifie se déplacer vers le nord de la valeur donnée.
+- L'action S signifie se déplacer vers le sud de la valeur donnée.
+- L'action E signifie se déplacer vers l'est de la valeur donnée.
+- L'action W signifie se déplacer vers l'ouest de la valeur donnée.
+- L'action L signifie tourner à gauche le nombre de degrés donné.
+- L'Action R signifie tourner à droite le nombre de degrés donné.
+- L'Action F signifie avancer de la valeur donnée dans la direction à laquelle le navire fait actuellement face.
 
-Le carré de la somme des dix premiers entiers naturels est :
+Le navire commence par faire face à l'est. Seules les actions L et R changent la direction du navire. (Autrement dit, si le navire fait face à l'est et que l'instruction suivante est N10, le navire se déplacerait vers le nord de 10 unités, mais se déplacerait toujours vers l'est si l'action suivante était F.)
 
-![carré de la somme](http://www.sciweavers.org/upload/Tex2Img_1603435122/eqn.png "powee two sum")
+#### Par exemple:
 
-Ainsi la différence entre la somme des carrés et le carré de la somme pour les dix premiers entiers naturels est : `3025 - 385 = 2640`
+```
+F10
+N3
+F7
+R90
+F11
+```
 
-Trouvez la différence entre la somme des carrés et le carré de la somme pour les cent premiers entiers naturels
+Ces instructions seraient traitées comme suit:
+
+- F10 déplacerait le navire de 10 unités vers l'est (car le navire commence par faire face à l'est) vers l'est 10, le nord 0.
+- N3 déplacerait le navire de 3 unités du nord à l'est 10, au nord 3.
+- F7 déplacerait le navire de 7 unités supplémentaires vers l'est (car le navire est toujours face à l'est) vers l'est 17, nord 3.
+- R90 ferait tourner le navire à droite de 90 degrés et faire face au sud; il reste à l'est 17, au nord 3.
+- F11 déplacerait le navire de 11 unités sud-est 17, sud 8.
+
+A la fin de ces instructions, la distance Manhattan du navire (somme des valeurs absolues de sa position est / ouest et de sa position nord / sud) de sa position de départ est 17 + 8 = 25.
+
+Déterminez où mènent les instructions de navigation. Quelle est la distance de Manhattan entre cet endroit et la position de départ du navire ?
+
+Voici [votre input](https://raw.githubusercontent.com/FOLHOMEE/test-technique-stagiaire/master/input_3.txt)
