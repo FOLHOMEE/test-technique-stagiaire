@@ -40,9 +40,9 @@ Réalisez un programme pour trouver la somme de tous les multiples de 3 ou 5 en 
 
 ### Problème #2
 
-Chaque nouveau terme dans la séquence de Fibonacci est généré en ajoutant les deux termes précédents. En commençant par 1 et 2, les 10 premiers termes seront:
+Chaque nouveau terme dans la séquence de Fibonacci est généré en ajoutant les deux termes précédents. En commençant par 1 et 1, les 10 premiers termes seront:
 
-1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
+1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...
 
 En considérant les termes de la séquence de Fibonacci dont les valeurs ne dépassent pas quatre millions, réaliser un programme pour trouver la somme des termes pairs.
 
