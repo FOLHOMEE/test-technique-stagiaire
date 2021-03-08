@@ -31,55 +31,99 @@ Vous êtes libres sur le choix du langage et l'algorithme de résolution
 
 ## Exercices
 
-
 ### Problème #1
 
-Si nous listons tous les nombres naturels inférieurs à 10 qui sont des multiples de 3 ou 5, nous obtenons 3, 5, 6 et 9. La somme de ces multiples est 23.
+Une séquence de Collatz se définie comme ceci, pour un entier n donné
 
-Réalisez un programme pour trouver la somme de tous les multiples de 3 ou 5 en dessous de 1000.
+- Si n est pair, on renvoie `n/2`
+- Si n est impair, on renvoie `3n + 1`
+
+Par exemple, en commencant par 13, on génére la séquence suivante
+
+```
+13 -> 40 -> 20 -> 10 -> 5 -> 16 -> 8 -> 4 -> 2 -> 1
+```
+
+Nous pouvons voir qu'en commencant par 13 (et en finissant par 1) la séquence contient 10 termes. Même si cela n'a pas été prouvé (Problème de Collatz), il est admis que quelque soit le nombre de départ, on termine toujours sur 1.
+
+**Quel nombre, inférieur à 1 million, produit la séquence la plus longue ?**
+
 
 ### Problème #2
 
-Chaque nouveau terme dans la séquence de Fibonacci est généré en ajoutant les deux termes précédents. En commençant par 1 et 1, les 10 premiers termes seront:
+Chez Folhomee, nous utilisons un vérificateur de mot de passe qui indique les critères à respecter pour les mots de passe. Dans cet exercice, Nous allons chercher à calculer la totalité de mot de passe qu'il est possible d'avoir pour un vérificateur de mot de passe donnée.
 
-1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...
+Ce dernier doit respecter les règles suivante :
 
-En considérant les termes de la séquence de Fibonacci dont les valeurs ne dépassent pas quatre millions, réaliser un programme pour trouver la somme des termes pairs.
+- C'est une chaine de 6 nombres
+- Sa valeur est comprise entre `382345` et `843167`
+- On a au moins 2 chiffres qui sont adjacents (comme 22 dans 1**22**345)
+- Quand on lit les chiffres de gauche à droite, ils ne peuvent pas décroitre : C'est à dire qu'ils sont soit égaux soit supérieurs (comme 111123 ou 1356789)
+
+Par exemple :
+
+- `555555` est bon
+- `555560` n'est pas bon (on a des chiffres qui décroissent)
+- `456789` n'est pas bon (on a pas de double)
+
+**Combien de mots de passe différents** peut-on créer avec ces règles ?
+
+#### Bonus
+
+> À ne faire que si vous avez tout fini
+
+On rajoute la règle suivante :
+
+- Les deux nombres adjacents ne peuvent pas faire parti d'un groupe plus large de même nombre
+
+Par exemple :
+
+- `555555` n'est plus bon (le double 5 fait parti d'un groupe plus grand)
+- `444455` est bon car même si le double 4 fait parti d'un groupe plus grand, on a quand même un double 2
+
+**Combien de mots de passe différents** peut-on créer avec ces règles (les précédentes et la nouvelle) ?
 
 ### Problème #3
 
-Dans cet exercice, nous allons travailler sur le décryptage d'un plan de navigation, et nous allons ensuite calculer la [distance de Manhattan](https://en.wikipedia.org/wiki/Taxicab_geometry) du bateau, par rapport à son point de départ. Les instructions de navigation (votre input) se composent d'une séquence d'actions à un seul caractère associées à des valeurs d'entrée entières :
+Chez Folhomee, nous classifions nos annonces en utilisant le moteur d'indexation de notre base de données. Dans cet exercice nous allons manipuler un moteur d'indexation particulier pour retrouver la place d'un objet en base de données.
 
-- L'action N signifie se déplacer vers le nord de la valeur donnée.
-- L'action S signifie se déplacer vers le sud de la valeur donnée.
-- L'action E signifie se déplacer vers l'est de la valeur donnée.
-- L'action W signifie se déplacer vers l'ouest de la valeur donnée.
-- L'action L signifie tourner à gauche le nombre de degrés donné.
-- L'Action R signifie tourner à droite le nombre de degrés donné.
-- L'Action F signifie avancer de la valeur donnée dans la direction à laquelle le navire fait actuellement face.
+Pour notre classification, nous allons utiliser pour nos ID un modèle de *partionnement d'espace binaire en deux dimension*, en écrivant nos chaine de caractère pour les ID de cette manière : `FBFBBFFRLR`, en ecrivant :
 
-Le navire commence par faire face à l'est. Seules les actions L et R changent la direction du navire. (Autrement dit, si le navire fait face à l'est et que l'instruction suivante est N10, le navire se déplacerait vers le nord de 10 unités, mais se déplacerait toujours vers l'est si l'action suivante était F.)
+- `F` pour Front
+- `B` pour Back
+- `R` pour Right
+- `L` pour Left
 
-#### Par exemple:
+Nous allons classifier nos objets dans une matrice dans une matrice de 128 * 8, soit 1024 possibilité (on est sur une petit base de données :D )
 
-```
-F10
-N3
-F7
-R90
-F11
-```
+Les 7 premiers caractères seront soit `F` soit `B`, qui doivent représenter exactement une des 128 lignes de notre matrice de positionnement. Chaque lettre vous indique dans quelle moitié se situe l'objet de cette manière : On prend la première lettre qui indique si on est dans la première moitié `F` (0 à 63) ou la seconde `B` (64 jusqu'à 127), puis la prochaine indique dans quelle moitié et ainsi de suite jusqu'à que vous ayez une seule ligne
 
-Ces instructions seraient traitées comme suit:
+Par exemple, en considérant les 7 premieres caractères de `FBFBBFFRLR`
 
-- F10 déplacerait le navire de 10 unités vers l'est (car le navire commence par faire face à l'est) vers l'est 10, le nord 0.
-- N3 déplacerait le navire de 3 unités du nord à l'est 10, au nord 3.
-- F7 déplacerait le navire de 7 unités supplémentaires vers l'est (car le navire est toujours face à l'est) vers l'est 17, nord 3.
-- R90 ferait tourner le navire à droite de 90 degrés et faire face au sud; il reste à l'est 17, au nord 3.
-- F11 déplacerait le navire de 11 unités sud-est 17, sud 8.
+- `F` veut dire la première partie, donc 0 à 63
+- `B` veut dire la seconde partie, donc 32 à 63
+- `F` veut dire la première partie, donc 32 à 47
+- `B` veut dire la seconde partie, donc 40 à 47
+- `B` veut dire la seconde partie, donc 44 à 47
+- `F` veut dire la première partie, donc 44 à 45
+- `F` veut dire la première partie, donc 44
 
-A la fin de ces instructions, la distance Manhattan du navire (somme des valeurs absolues de sa position est / ouest et de sa position nord / sud) de sa position de départ est 17 + 8 = 25.
+Les 3 dernières lettres seront soit `L` soit `R`, qui doivent représenter les colonnes dans notre matrice, de la même manière que précédemment
 
-Déterminez où mènent les instructions de navigation. Quelle est la distance de Manhattan entre cet endroit et la position de départ du navire ?
+Par exemple pour `FBFBBFFRLR`
 
-Voici [votre input](https://raw.githubusercontent.com/FOLHOMEE/test-technique-stagiaire/master/input_3.txt)
+- `R` veut dire la seconde partie, donc 4 à 7
+- `L` veut dire la première partie, donc 4 à 5
+- `R` veut dire la seconde partie, donc 5
+
+Donc si on décode notre ID, l'objet en base se trouve sur la 44ème ligne et à la 5ème colonne.
+
+Pour faciliter la lecture et offusquer un peu notre système, on va donner une ID publique à chaque objet en fonction de son placement dans notre matrice : Pour cela on va multiplier la ligne par 8 et lui ajouter la colonne. Dans notre exemple ca veut dire `44 * 8 + 5 = 357`
+
+Voici quelques autres exemples :
+
+- `BFFFBBFRRR` : ligne 70, colonne 7, id publique 567
+- `FFFBBBFRRR` : ligne 14, colonne 7, id publique 119
+- `BBFFBBFRLL` : ligne 102, colonne 4, id publique 820
+
+[Votre input](https://raw.githubusercontent.com/FOLHOMEE/test-technique-stagiaire/master/input_3.txt) consiste en une liste d'ID, **quelle est la plus haute ID publique de la liste ?**
