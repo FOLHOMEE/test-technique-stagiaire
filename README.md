@@ -14,7 +14,7 @@ Il est important de respecter les consignes suivantes :
 
 - Ne sautez pas un exercice, il faut respecter l'ordre
 - Vous n'avez pas besoin d'utiliser un service extérieur pour les exercices
-- Il est très facile de trouver des résolutions/solutions de ce test en ligne, aussi vous serez jugé sur votre capacité de structurater votre code
+- Il est très facile de trouver des résolutions/solutions de ce test en ligne, aussi vous serez jugé sur votre capacité de structurer votre code
 - Essayez de trouver une méthode pour résoudre _rapidement_ l'exercice sur une machine avec de faibles ressources
 
 ## Livrables
