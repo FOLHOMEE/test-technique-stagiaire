@@ -79,7 +79,7 @@ On rajoute la règle suivante :
 Par exemple :
 
 - `555555` n'est plus bon (le double 5 fait parti d'un groupe plus grand)
-- `444455` est bon car même si le double 4 fait parti d'un groupe plus grand, on a quand même un double 2
+- `444455` est bon car même si le double 4 fait parti d'un groupe plus grand, on a quand même un double 5
 
 **Combien de mots de passe différents** peut-on créer avec ces règles (les précédentes et la nouvelle) ?
 
